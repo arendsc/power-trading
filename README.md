@@ -58,6 +58,8 @@ minimises forecast error.
 .
 ├── examples/
 │   └── run_case.py
+├── tests/
+│   └── test_core.py
 ├── src/
 │   └── power_price_risk/
 │       ├── costs.py
@@ -73,7 +75,7 @@ minimises forecast error.
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate
-pip install -e .
+pip install -e ".[dev]"
 python3 examples/run_case.py
 ```
 
@@ -83,6 +85,12 @@ Without installing the package:
 PYTHONPATH=src python3 examples/run_case.py
 ```
 
+## Test
+
+```bash
+pytest
+```
+
 ## Notes
 
 The current model uses synthetic lognormal realisations around a fixed hourly
@@ -90,8 +98,6 @@ forecast curve.
 
 Planned next steps:
 
-- Add tests for simulation, residual cost validation, risk measures, and
-  optimisation.
 - Add a mean-reverting price model as a more power-specific alternative to the
   independent lognormal benchmark.
 - Add one compact trading-analysis layer, for example simple cost/risk diagnostics
